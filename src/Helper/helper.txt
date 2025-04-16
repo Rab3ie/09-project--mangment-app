@@ -22,5 +22,35 @@ end section 9 (lec 157)
 		-<label>{label},
 		-{textarea ? <textarea {...props} /> : <input{...props}/>}
 		-
-	
-	
+152-
+	1-at "NewProject" comp style
+		1-div CN"[w-35]"
+		2-menu CN"fle item- center justify-en gap-4"
+		3-cancel button CN"hover hover:textStone-950"
+		4-save button bg-stone-800 hover :950 [px-6 py-2]
+		5-at "Input" comp 
+		6-p CN"flex fle-col- gap-1 my-4"
+		7-label cn#"upperCase text-stone-500"
+		8-<textarea and input" CN#"w-full p-1 border-b-2 rounded-sm border-stone-300 bg-stone-200 text-stone-600 foucs:outline-none foucs:border-stone-600"
+153-
+	1-create "NoProjectSelected" comp
+	2-at "NoProjectSelected" add <div>
+	3- -> <img>
+	4- , <h2> "No Poject Selected
+	5-, <p>
+	6- -> <button> Create New Project
+	7- div CN#"w-2/3"
+	8- img Import noProjectImage CN#"
+	9-h2 CN#" text-stone-500 my-4
+	10- pCN#"text-stone-400 mb-4"
+	11 p-> button CN#" mt-8"
+	12-buttonCN# "Button" comp
+	13-create a "Button" comp props {childern, ...props}
+		1-copy the button form "NewProject"
+154-
+	1-at "App" comp will create state (useState)
+	2-["projectsSTate, setProjectsState] =  {slectedProjectId: undefiend,
+				projects: []}
+	3-ad func "handStartAddProject(){
+		setProjectsState()
+	}
