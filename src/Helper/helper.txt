@@ -1,0 +1,26 @@
+Break section 9 (lec 154)
+end section 9 (lec 157)
+
+149-
+	1-create comp floder
+	2-create "ProjectSidebar" comp
+	3-<aside> -> <h2>"Your Projects,<div> -> <button>"+ Add Project", <ul>
+	4-at "App" comp add "ProjectSidebar"  comp 
+	5-<main> -> <"ProjectSidebar"> 
+150-
+	1-mainCN#" asidCN#"
+	2-at "ProjectSidebar comp add CN#"text-stone-200"
+	3-buttonCN#"bg-stone-700" "hover: bg-stone-600"
+	
+151-
+	1-Add new comp "NewProject"
+	2-<div> -> (<menu> -> <button>"Cancel", <button>"Save"), 
+	(<div> -> (<p> -> (<label>#"Title", <input>), (<p> -> 		(<label>#"Description", <textarea>),
+	(<p> -> (<label>#"Due Date", <input>))
+	3-Add new comp"Input" has prop"textarea, label, ...props"
+		-<p> ->
+		-<label>{label},
+		-{textarea ? <textarea {...props} /> : <input{...props}/>}
+		-
+	
+	
