@@ -54,3 +54,28 @@ end section 9 (lec 157)
 	3-ad func "handStartAddProject(){
 		setProjectsState()
 	}
+155-
+	1-at "NewProject" comp 
+	2-will use useRef create three 
+		-titleRef
+		-descriptionRef
+		-dueDateRef
+	3-at "Input" comp
+		1-use forwardref
+		2-at textarea and input add ref and assign to "ref" prop
+	4- at "NewProject" comp
+		1-assign -titleRef,-descriptionRef,-dueDateRef
+		2-creat function "handleSave"
+		3-and connected to "Save" Button
+		4-at function handlesave
+			1-enterted title to titleRef and so on ...
+			2-//validation
+		5- at "App" comp
+			1-create function "handleAddProject"
+			2-at handleAddProject 
+				1-use setProjectsState
+				2-create a variable "newPorject" wih id" Math.random()
+			3-at "NewProject" comp
+				1-create porp "onAdd"
+				2-at handleSave use the onAdd as an object
+			
