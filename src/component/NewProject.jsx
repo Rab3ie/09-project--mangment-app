@@ -1,7 +1,7 @@
 import Input from "./Input";
 import { useRef } from "react";
 
-export default function NewProject(){
+export default function NewProject({onAdd}){
     const title = useRef();
     const description = useRef();
     const dueDate = useRef();
@@ -10,6 +10,11 @@ export default function NewProject(){
         const enteretddescription = description.current.value;
         const entertedDueDate = dueDate.current.value;
         //validation
+        onAdd({
+           title: entertedTitle,
+           description: enteretddescription,
+           dueDate: entertedDueDate, 
+        });
     }
     return(
         <div  className="w-[35rem] mt-16">
