@@ -1,15 +1,22 @@
 import Input from "./Input";
+import Modal from "./Modal";
 import { useRef } from "react";
 
 export default function NewProject({onAdd}){
     const title = useRef();
     const description = useRef();
     const dueDate = useRef();
+    const modal = useRef();
     function handleSave(){
         const entertedTitle = title.current.value;
         const enteretddescription = description.current.value;
         const entertedDueDate = dueDate.current.value;
-        //validation
+        if(entertedTitle.trim() === '' || 
+            enteretddescription.trim() ==='' ||
+            entertedDueDate.trim() === ''){
+                modal.current.open();
+                return;
+            }
         onAdd({
            title: entertedTitle,
            description: enteretddescription,
@@ -17,6 +24,12 @@ export default function NewProject({onAdd}){
         });
     }
     return(
+        <>
+    
+        <Modal ref={modal} buttonCaption={'close'}>
+            <h2>This an warring message</h2>
+            <p>You have wrote an empty form</p>
+        </Modal>
         <div  className="w-[35rem] mt-16">
             <menu className="flex items-center justify-end gap-4 my-4">
                 <li><button className="text-stone-800 hover:text-stone-950">Cancel</button></li>
@@ -29,5 +42,6 @@ export default function NewProject({onAdd}){
                 <Input  ref={dueDate} type="date" label={"Due Date"} />
             </div>
         </div>
+        </>
     );
 }

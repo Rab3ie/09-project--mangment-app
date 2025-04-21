@@ -78,4 +78,24 @@ end section 9 (lec 157)
 			3-at "NewProject" comp
 				1-create porp "onAdd"
 				2-at handleSave use the onAdd as an object
+
+156-
+	1-at "App" comp
+		1-remove conslo.log
+		2-jsx "ProjectSidebar" 
+		3-add prop "projects"
+		4-pass to "projectState.projects"
+	2-at "ProjectSidebar" comp
+		1-und <div> create <ul>
+		2-create "projects" prop and use .map()
+		3- has button with style "w-full text-left text-stone-400 hover:text-stone-200"
+		4-ul CN#"mt-8"
+157-
+	1-at "NewProject" comp 
+		1-at handlesave func
+			1-if(empty)
+			2-action will be/ //error modal
+	2-create "Modal" comp
+		1-has dialog and has childern
+		2-
 			
