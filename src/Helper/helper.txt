@@ -97,5 +97,86 @@ end section 9 (lec 157)
 			2-action will be/ //error modal
 	2-create "Modal" comp
 		1-has dialog and has childern
-		2-
+Start lec(158)
+end lec(161)
+158-
+	1-at "Modal" comp
+		1-style dialog "backdrop"
+		2-form " mt-4 text-right
+		3-Button import Button Tag and imported with styles
+	2-at "App" comp
+		1-create func "handleCancelAddProject"
+			1-comp statment of "handleStartAddProject"
+			2-set slectedProjectId: undefiend
+			3-at "NewProject" pass OnCnacel as prop with "handleCancelAddProject"
+	3-at "NewProject" comp
+		1-add "onCancel" prop
+		2-pass it to Button with "Modal" comp
+159-
+	1-create a new "SelectedProject" comp
+		1-div CN#"w-35 mt-16"
+			1-headerCN"pb-4 mb-4 border-b-2 border-stone=300"
+				1-divCN#"flex item-center justify"
+					1-h1{project.title} CN"text-3xl"
+					2-Button"Delete" CN"text-stone-600 hover:950"
+				2-p{Project.dueDate}CN#"text-stone-400"
+					1-create const"fomratedDate" and use object Date
+				3-p{project.discroption}CN"#text-stone-600 white-space"
+		2-Tasks
+		3-create "project" prop as object
+	2-at"App" comp
+		1-new func "handleSelectProject" (id)
+			1-copy func "handleStartAddProject"
+			2- edit "SelectedProjectId" "id"
+		2-pass the fun "handleSelectProject" to "ProjectSidebar" Tag
+		3-with prop "onSelectProject" and value" handleSelectProject"
+	3-at "ProjectSidebar" comp
+		1-create prop"onSelectProject"
+		2-at button Project.title onClick{onSelectProject}
+		3-create "SelectedProjectId" prop
+		4-edit project.map and make a condtitnal for "SelectedProjectId"
+		5-create let "cssClasses" 
+		6-make conditional "cssClasses" CN#"bg-stone-800 text-stone-200"
+		7-remove text-stone-400 and added to else
+	4-at "App" comp
+		1-set default content "<SelectProject Project{} />
+		2-create const"selectProject"
+			1-projectState.Projects.find(project => project.id === projectState.slectedProjectId)
+		3-Project{selectProject}
+160-
+	1-at "App" comp
+		1-create fun "handleDeleteProject"
+			1-copy "handleAddProject"
+			2-edit SelectedProjectId "undefiend"
+			3-projects: prevState .projects.filter((project) => project.id !== prevState.SelectedProjectId )
+		2-create "SelectProject" tag "onDelete" prop"
+		3-pass handleDeleteProject to it
+	2-at "SelectedProject" comp
+		1-create "onDelete" prop
+		2-cerate onClick at Delete button
+		3-pass "onDelete" prop to it
+161-
+	1-create "Tasks" comp
+		1-section
+			1-h2#"Tasks"CN#"text-2xl text-stone-700"
+			new Tasks
+			2-p#"This project doesn't have any tasks yet"CN#"text-stone-800 my-4"
+			3-ul
+	2-at "SelectProject" comp
+		1-instead of Tasks
+		2-use "Tasks" comp
+	3-create "NewTask" comp
+		1-divCN#"flex - item-center gap-4"
+			1-input CN#"w-64 px-2 py-1 rounded-sm bg-stone-200"
+			2-button"Add Task"text-stone-700 hover: text-stone-950"
+	4-at "Tasks" comp
+		1-replace newTask with "NewTask tag
+
+
+		
+
+
+		
+
+
 			
