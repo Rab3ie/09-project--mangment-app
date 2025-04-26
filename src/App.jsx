@@ -7,9 +7,10 @@ function App() {
   const [projectsState, setProjectsState] = useState({
     selectProjectId: undefined,
     projects:[],
+    // tasks:[],
   });
   const selectProject = projectsState.projects.find(project => project.id === projectsState.selectProjectId);
-  let content = <SelectProject project={selectProject} onDelete={handleDeleteProject}/>;
+  let content = <SelectProject project={selectProject} onDelete={handleDeleteProject} onAddTask={handleAddTask} onDeleteTask={handleDeleteTask} onAddTaskList={selectProject?.tasks || []} />;
   if(projectsState.selectProjectId === null){
     
     content = <NewProject onAdd={handleAddProject} onCancel={handleCancelAddProject}/>
@@ -32,6 +33,7 @@ function App() {
         const newProject={
           ...projectData,
           id: Math.random(),
+          tasks: [],
         };
         return{
           ...prevproject,
@@ -66,6 +68,46 @@ function App() {
       };
      });
   }
+  function handleAddTask(text) {
+    setProjectsState((prevState) => {
+      const taskId = Math.random();
+      const newTask = {
+        text: text,
+        id: taskId,
+      };
+
+      return {
+        ...prevState,
+        projects: prevState.projects.map((project) => {
+          if (project.id === prevState.selectProjectId) {
+            return {
+              ...project,
+              tasks: [...(project.tasks || []), newTask], // Add task to the selected project
+            };
+          }
+          return project;
+        }),
+      };
+    });
+  }
+  function handleDeleteTask(id) {
+    setProjectsState((prevProject) => {
+      return {
+        ...prevProject,
+        projects: prevProject.projects.map((project) => {
+          if (project.id === prevProject.selectProjectId) {
+            return {
+              ...project,
+              tasks: project.tasks.filter((task) => task.id !== id), // Remove task from the selected project
+            };
+          }
+          return project;
+        }),
+      };
+    });
+  }
+  console.log(projectsState.projects);
+
   return (
     <>
       <main  className="h-screen my-8 flex gap-8">

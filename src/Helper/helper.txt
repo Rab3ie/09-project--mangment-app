@@ -171,6 +171,56 @@ end lec(161)
 			2-button"Add Task"text-stone-700 hover: text-stone-950"
 	4-at "Tasks" comp
 		1-replace newTask with "NewTask tag
+162-
+	1-at "NewTask" comp
+		1-create useState ["enteretdTask, setEnteretedTask"]
+		2-create function handleChange (event)
+			1-setEnteretedTask(event.traget.value)
+		3-input onChange={handleChange} , value={enteretdTask}
+	2-at "App" comp
+		1-create task objectkey of useState
+		2-create function handleAddTask
+		3-create function handleDeleteTask
+	3-at "NewTask" comp
+		1-create function "handleClick"
+			1-setEnteretedTask('')
+	4-at "App" comp
+		1-"SelectProject" tag add prop onAddTask={handleAddTask}
+		2-"SelectProject" tag add prop onDeleteTask={handleDeleteTask}
+	5-at "SelectProject" comp
+		1-create props "onAddTask, onDeleteTask"
+		2-"Tasks" tag add prop onAdd={onAddTask}
+		3-"Tasks" tag add prop onDelete={onDeleteTask}
+	6-at "Tasks" comp
+		1-create props"onAdd, onDelete"
+		2-"NewTask" tag create prop onAdd={onAdd}
+		2-"NewTask" tag create prop onDelete={onDelete}
+	7-at "NewTask" comp
+		1-create props "onAdd, onDelete"
+		2-at function "handleClick"
+			1-add onAdd(enteretdTask)
+	8-at "App" comp
+		1-function handleAddTask(text)
+			1-copy function handleAddProject
+			2-edit projectId to "taskId"
+			3-edit newPorject to "newTask"
+			4-delete projectData to text:text
+			5- id: taskId
+			6-projectId: prevState.SelectedProjectId
+			7-at return delete projects
+			8-tasks: [...prevState.tasks, newTask]
+			9-delete SelectedProjectId at return
+	9-at "NewTask" comp
+		1-create tasks prop
+		2-conritionally if tasks.length ===0 set p tag
+		3-else tasks.length > 0 render ulCN#"p-4 mt-8 bg-stone-100 tag
+		4-tasks.map((task) => <liCN#"flex justfiy-between my-4" key={task.id}>
+		span{task.text} span buttonCN#"text-stone-700 hover:text-stone-red-500 Clear button</li> )
+163-
+	1-at "App" comp
+		1-handleDeleteTask func
+			1-
+			
 
 
 		
